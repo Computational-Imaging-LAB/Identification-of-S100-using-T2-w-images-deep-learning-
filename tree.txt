@@ -1,0 +1,21 @@
+.
+├── build
+│   ├── doctrees
+│   └── html
+├── index.rst
+├── inference.py
+├── main_objected.py
+├── make.bat
+├── Makefile
+├── meningiom_dataloader.py
+├── prepare_data.py
+├── preprocess.py
+├── requirements.txt
+├── source
+│   ├── conf.py
+│   ├── index.rst
+│   ├── _static
+│   └── _templates
+└── tree.txt
+
+6 directories, 12 files

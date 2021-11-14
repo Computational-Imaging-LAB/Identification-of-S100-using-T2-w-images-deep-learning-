@@ -1,0 +1,7 @@
+main\_objected module
+=====================
+
+.. automodule:: main_objected
+   :members:
+   :undoc-members:
+   :show-inheritance:

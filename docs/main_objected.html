@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html >
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+      <title>main_objected module</title>
+    
+          <link rel="stylesheet" href="static/pygments.css" type="text/css" />
+          <link rel="stylesheet" href="static/theme.css " type="text/css" />
+      
+      <!-- sphinx script_files -->
+        <script data-url_root="./" id="documentation_options" src="static/documentation_options.js"></script>
+        <script src="static/jquery.js"></script>
+        <script src="static/underscore.js"></script>
+        <script src="static/doctools.js"></script>
+
+      
+      <!-- bundled in js (rollup iife) -->
+      <!-- <script src="static/theme-vendors.js"></script> -->
+      <script src="static/theme.js" defer></script>
+    
+  <link rel="index" title="Index" href="genindex.html" />
+  <link rel="search" title="Search" href="search.html" /> 
+  </head>
+
+  <body>
+    <div id="app">
+    <div class="theme-container" :class="pageClasses"><navbar @toggle-sidebar="toggleSidebar">
+  <router-link to="index.html" class="home-link">
+    
+      <span class="site-name">S100 Identification</span>
+    
+  </router-link>
+
+  <div class="links">
+    <navlinks class="can-hide">
+
+
+
+    </navlinks>
+  </div>
+</navbar>
+
+      
+      <div class="sidebar-mask" @click="toggleSidebar(false)">
+      </div>
+        <sidebar @toggle-sidebar="toggleSidebar">
+          
+          <navlinks>
+            
+
+
+
+            
+          </navlinks><div id="searchbox" class="searchbox" role="search">
+  <div class="caption"><span class="caption-text">Quick search</span>
+    <div class="searchformwrapper">
+      <form class="search" action="search.html" method="get">
+        <input type="text" name="q" />
+        <input type="submit" value="Search" />
+        <input type="hidden" name="check_keywords" value="yes" />
+        <input type="hidden" name="area" value="default" />
+      </form>
+    </div>
+  </div>
+</div><div class="sidebar-links" role="navigation" aria-label="main navigation">
+  
+</div>
+        </sidebar>
+
+      <page>
+          <div class="body-header" role="navigation" aria-label="navigation">
+  
+  <ul class="breadcrumbs">
+    <li><a href="index.html">Docs</a> &raquo;</li>
+    
+    <li>main_objected module</li>
+  </ul>
+  
+
+  <ul class="page-nav">
+</ul>
+  
+</div>
+<hr>
+          <div class="content" role="main" v-pre>
+            
+  <div class="section" id="module-main_objected">
+<span id="main-objected-module"></span><h1>main_objected module<a class="headerlink" href="#module-main_objected" title="Permalink to this headline">¶</a></h1>
+<dl class="py function">
+<dt class="sig sig-object py" id="main_objected.build_dataset">
+<span class="sig-prename descclassname"><span class="pre">main_objected.</span></span><span class="sig-name descname"><span class="pre">build_dataset</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input_csv</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">pandas.core.frame.DataFrame</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">root_path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">column</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'s100'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">batch_size</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">transform</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">shuffle</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_workers</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#main_objected.build_dataset" title="Permalink to this definition">¶</a></dt>
+<dd><p>Dataset creation</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>input_csv</strong> (<em>pd.DataFrame</em>) – Input csv file that contains the names, age, sex, tumor location and targets</p></li>
+<li><p><strong>root_path</strong> (<em>str</em>) – root path for images</p></li>
+<li><p><strong>column</strong> (<em>str</em><em>, </em><em>optional</em>) – Column of the target. Defaults to ‘s100’.</p></li>
+<li><p><strong>batch_size</strong> (<em>int</em><em>, </em><em>optional</em>) – It is hard to collate different sized of slices hence use 1 for batch size. Defaults to 1.</p></li>
+<li><p><strong>transform</strong> (<em>bool</em><em>, </em><em>optional</em>) – Augmentation flag. Defaults to False.</p></li>
+<li><p><strong>shuffle</strong> (<em>bool</em><em>, </em><em>optional</em>) – Shuffle flag. Defaults to False.</p></li>
+<li><p><strong>num_workers</strong> (<em>int</em><em>, </em><em>optional</em>) – Count of data workers. Defaults to 0.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>dataloader</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>[torch.data.dataloader]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="main_objected.build_optimizer">
+<span class="sig-prename descclassname"><span class="pre">main_objected.</span></span><span class="sig-name descname"><span class="pre">build_optimizer</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">network</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">optimizer</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">learning_rate</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#main_objected.build_optimizer" title="Permalink to this definition">¶</a></dt>
+<dd><p>Optimizer creation</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>network</strong> (<em>torch.model</em>) – Network to train</p></li>
+<li><p><strong>optimizer</strong> (<em>str</em>) – optimizer type one of [sgd,adam,rmsprop]</p></li>
+<li><p><strong>learning_rate</strong> (<em>float</em>) – float learning rate</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>optimizer</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>[torch.optim.optimizer]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="main_objected.classifier">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">main_objected.</span></span><span class="sig-name descname"><span class="pre">classifier</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">in_features</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">out_features</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#main_objected.classifier" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">torch.nn.modules.module.Module</span></code></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="main_objected.classifier.forward">
+<span class="sig-name descname"><span class="pre">forward</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">features</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#main_objected.classifier.forward" title="Permalink to this definition">¶</a></dt>
+<dd><p>Defines the computation performed at every call.</p>
+<p>Should be overridden by all subclasses.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Although the recipe for forward pass needs to be defined within
+this function, one should call the <code class="xref py py-class docutils literal notranslate"><span class="pre">Module</span></code> instance afterwards
+instead of this since the former takes care of running the
+registered hooks while the latter silently ignores them.</p>
+</div>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="main_objected.classifier.training">
+<span class="sig-name descname"><span class="pre">training</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">bool</span></em><a class="headerlink" href="#main_objected.classifier.training" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="main_objected.count_parameters">
+<span class="sig-prename descclassname"><span class="pre">main_objected.</span></span><span class="sig-name descname"><span class="pre">count_parameters</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">model</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#main_objected.count_parameters" title="Permalink to this definition">¶</a></dt>
+<dd><p>Counts the number of parameters in a model.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>model</strong> (<em>torch.model</em>) – Model to count parameters</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Count of all trainable parameters in the model</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>[int]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="main_objected.create_model">
+<span class="sig-prename descclassname"><span class="pre">main_objected.</span></span><span class="sig-name descname"><span class="pre">create_model</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">model_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">classes</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pretrained</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">requires_grad</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">in_channels</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">custom_pretrained</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">feature_extractor</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#main_objected.create_model" title="Permalink to this definition">¶</a></dt>
+<dd><p>Feature extractor creation</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>model_name</strong> (<em>str</em>) – One of [resnetx,densenetx,vggx,inceptionx]</p></li>
+<li><p><strong>classes</strong> (<em>int</em><em>, </em><em>optional</em>) – Output of the classes. Defaults to 2. It is unimportant for the model if you use it as feature extractor because we will change the last classifier by IdentityNet()</p></li>
+<li><p><strong>pretrained</strong> (<em>bool</em><em>, </em><em>optional</em>) – Pretained flag. Defaults to True.</p></li>
+<li><p><strong>requires_grad</strong> (<em>bool</em><em>, </em><em>optional</em>) – Freeze flag. Defaults to True.</p></li>
+<li><p><strong>in_channels</strong> (<em>int</em><em>, </em><em>optional</em>) – Input channel(s) of the feature extractor . Defaults to 1.</p></li>
+<li><p><strong>custom_pretrained</strong> (<em>str</em><em>, </em><em>optional</em>) – If you have pretrained networks to use to train classifier give the path. Defaults to None.</p></li>
+<li><p><strong>feature_extractor</strong> (<em>bool</em><em>, </em><em>optional</em>) – If it is true classes become not important. If no please consider number of classes. Defaults to True.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Feature extractor if feature_extractor is true, else model with the out classes and pretrained weights</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>[torch.model]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="main_objected.create_the_slices">
+<span class="sig-prename descclassname"><span class="pre">main_objected.</span></span><span class="sig-name descname"><span class="pre">create_the_slices</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">image</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">label</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">slices</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dim</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#main_objected.create_the_slices" title="Permalink to this definition">¶</a></dt>
+<dd><p>Splitting raw input image into slices</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>image</strong> (<em>torch.tensor</em>) – Input image</p></li>
+<li><p><strong>label</strong> (<em>torch.tensor</em>) – Target label</p></li>
+<li><p><strong>slices</strong> (<em>int</em><em>, </em><em>optional</em>) – Split size. Defaults to 5.</p></li>
+<li><p><strong>dim</strong> (<em>int</em><em>, </em><em>optional</em>) – Dimension of splitting. Defaults to 0.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>list of tensor images,
+[float]: list of tensor labels</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>[float]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="main_objected.read_csv">
+<span class="sig-prename descclassname"><span class="pre">main_objected.</span></span><span class="sig-name descname"><span class="pre">read_csv</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">column</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'s100'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#main_objected.read_csv" title="Permalink to this definition">¶</a></dt>
+<dd><p>Read csv file and dropping the nan values of target column</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>path</strong> (<em>str</em>) – Path to csv file</p></li>
+<li><p><strong>column</strong> (<em>str</em><em>, </em><em>optional</em>) – Column to drop nans. Defaults to ‘IDHConsensus’.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Dataframe that cleaned from nan vals of target column</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>[pandas.DataFrame]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="main_objected.train">
+<span class="sig-prename descclassname"><span class="pre">main_objected.</span></span><span class="sig-name descname"><span class="pre">train</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">config</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#main_objected.train" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="main_objected.train_epoch">
+<span class="sig-prename descclassname"><span class="pre">main_objected.</span></span><span class="sig-name descname"><span class="pre">train_epoch</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">network</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">classifier</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">loader</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">val_loader</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">optimizer</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">optimizer_classifier</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">criterion</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">device</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">slices</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#main_objected.train_epoch" title="Permalink to this definition">¶</a></dt>
+<dd><p>Training loop for the proposed model</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>network</strong> (<em>torch.model</em>) – torch pre-trained model aka feature extractor (resnet34)</p></li>
+<li><p><strong>classifier</strong> (<em>torch.model</em>) – Classifier model for the extracted features</p></li>
+<li><p><strong>loader</strong> (<a class="reference internal" href="meningiom_dataloader.html#meningiom_dataloader.dataloader" title="meningiom_dataloader.dataloader"><em>dataloader</em></a>) – Dataloader for the training set</p></li>
+<li><p><strong>val_loader</strong> (<a class="reference internal" href="meningiom_dataloader.html#meningiom_dataloader.dataloader" title="meningiom_dataloader.dataloader"><em>dataloader</em></a>) – Dataloader for the validation set</p></li>
+<li><p><strong>optimizer</strong> (<em>torch.optim.optimizer</em>) – Optimizer for the feature extractor</p></li>
+<li><p><strong>optimizer_classifier</strong> (<em>torch.optimizer</em>) – Optimizer for the classifier</p></li>
+<li><p><strong>criterion</strong> (<em>torch.losses</em>) – loss function</p></li>
+<li><p><strong>device</strong> (<em>str</em>) – Device to use for training</p></li>
+<li><p><strong>slices</strong> (<em>int</em>) – Number of slices to use for the training</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Cumulative loss for the training set
+[float]: Accuracy for the training set
+[float]: Cumulative loss for the validation set
+[float]: Accuracy for the validation set
+[float]: Accuracy for the training set slice-wise
+[float]: Accuracy for the training set majority voting
+[float]: Accuracy for the training set single-slice positivity
+[int]: Number of class 0
+[int]: Number of class 1
+[int]: Number of class 0 in the evaluation set
+[int]: Number of class 1 in the evaluation set</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>[float]</p>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+
+
+          </div>
+          <div class="page-nav">
+            <div class="inner"><ul class="page-nav">
+</ul><div class="footer" role="contentinfo">
+      &#169; Copyright 2021, Abdullah BAŞ.
+    <br>
+    Created using <a href="http://sphinx-doc.org/">Sphinx</a> 4.3.0 with <a href="https://github.com/schettino72/sphinx_press_theme">Press Theme</a> 0.8.0.
+</div>
+            </div>
+          </div>
+      </page>
+    </div></div>
+    
+    
+  </body>
+</html>

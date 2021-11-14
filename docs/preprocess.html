@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html >
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+      <title>preprocess module</title>
+    
+          <link rel="stylesheet" href="static/pygments.css" type="text/css" />
+          <link rel="stylesheet" href="static/theme.css " type="text/css" />
+      
+      <!-- sphinx script_files -->
+        <script data-url_root="./" id="documentation_options" src="static/documentation_options.js"></script>
+        <script src="static/jquery.js"></script>
+        <script src="static/underscore.js"></script>
+        <script src="static/doctools.js"></script>
+
+      
+      <!-- bundled in js (rollup iife) -->
+      <!-- <script src="static/theme-vendors.js"></script> -->
+      <script src="static/theme.js" defer></script>
+    
+  <link rel="index" title="Index" href="genindex.html" />
+  <link rel="search" title="Search" href="search.html" /> 
+  </head>
+
+  <body>
+    <div id="app">
+    <div class="theme-container" :class="pageClasses"><navbar @toggle-sidebar="toggleSidebar">
+  <router-link to="index.html" class="home-link">
+    
+      <span class="site-name">S100 Identification</span>
+    
+  </router-link>
+
+  <div class="links">
+    <navlinks class="can-hide">
+
+
+
+    </navlinks>
+  </div>
+</navbar>
+
+      
+      <div class="sidebar-mask" @click="toggleSidebar(false)">
+      </div>
+        <sidebar @toggle-sidebar="toggleSidebar">
+          
+          <navlinks>
+            
+
+
+
+            
+          </navlinks><div id="searchbox" class="searchbox" role="search">
+  <div class="caption"><span class="caption-text">Quick search</span>
+    <div class="searchformwrapper">
+      <form class="search" action="search.html" method="get">
+        <input type="text" name="q" />
+        <input type="submit" value="Search" />
+        <input type="hidden" name="check_keywords" value="yes" />
+        <input type="hidden" name="area" value="default" />
+      </form>
+    </div>
+  </div>
+</div><div class="sidebar-links" role="navigation" aria-label="main navigation">
+  
+</div>
+        </sidebar>
+
+      <page>
+          <div class="body-header" role="navigation" aria-label="navigation">
+  
+  <ul class="breadcrumbs">
+    <li><a href="index.html">Docs</a> &raquo;</li>
+    
+    <li>preprocess module</li>
+  </ul>
+  
+
+  <ul class="page-nav">
+</ul>
+  
+</div>
+<hr>
+          <div class="content" role="main" v-pre>
+            
+  <div class="section" id="module-preprocess">
+<span id="preprocess-module"></span><h1>preprocess module<a class="headerlink" href="#module-preprocess" title="Permalink to this headline">¶</a></h1>
+<dl class="py class">
+<dt class="sig sig-object py" id="preprocess.preGlioma">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">preprocess.</span></span><span class="sig-name descname"><span class="pre">preGlioma</span></span><a class="headerlink" href="#preprocess.preGlioma" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>This class is for preprocessing. Mainly wrote for gliomas but it is used in meningiomas too</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="preprocess.preGlioma.bet">
+<span class="sig-name descname"><span class="pre">bet</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">img</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#preprocess.preGlioma.bet" title="Permalink to this definition">¶</a></dt>
+<dd><p>Performing bet using another library</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>img</strong> (<em>nib.nifti</em>) – Input image</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Brain extracted image</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>[torch.tensor]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="preprocess.preGlioma.betfsl">
+<span class="sig-name descname"><span class="pre">betfsl</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">segs</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">root</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'/cta/users/abas/Desktop/Meningiom/MeningiomData/preprocessed/'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#preprocess.preGlioma.betfsl" title="Permalink to this definition">¶</a></dt>
+<dd><p>Performing fsl-bet using python</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>segs</strong> (<em>torch.tensor</em>) – segmentation paths. It is needed for finding the corresponding image</p></li>
+<li><p><strong>root</strong> (<em>str</em><em>, </em><em>optional</em>) – Root path of the images. Defaults to ‘/cta/users/abas/Desktop/Meningiom/MeningiomData/preprocessed/’.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Result situation</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>[str]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="preprocess.preGlioma.cut_tumor_image">
+<span class="sig-name descname"><span class="pre">cut_tumor_image</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">seg</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#preprocess.preGlioma.cut_tumor_image" title="Permalink to this definition">¶</a></dt>
+<dd><p>Cutting the tumor image from the segmentation</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>seg</strong> (<em>segmentatiom</em>) – [description]</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>[description]</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>[type]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="preprocess.preGlioma.normalize">
+<span class="sig-name descname"><span class="pre">normalize</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">img</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">typx</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'unit-variance'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">masked</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#preprocess.preGlioma.normalize" title="Permalink to this definition">¶</a></dt>
+<dd><p>Normalization step of the image</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>img</strong> (<em>np.array</em>) – image to be normalized</p></li>
+<li><p><strong>typx</strong> (<em>str</em><em>, </em><em>optional</em>) – Type of normalization [min-max, unit-variance]. Defaults to ‘unit-variance’.</p></li>
+<li><p><strong>masked</strong> (<em>bool</em><em>, </em><em>optional</em>) – Mask is for eliminate the zeroish voxels. Defaults to False.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Normalized image</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>[np.array]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="preprocess.preGlioma.patch_chopper">
+<span class="sig-name descname"><span class="pre">patch_chopper</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">imgs</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">patch_size</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">256</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#preprocess.preGlioma.patch_chopper" title="Permalink to this definition">¶</a></dt>
+<dd><p>This function is used to chop the image into patches</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>imgs</strong> (<em>list</em>) – input images</p></li>
+<li><p><strong>patch_size</strong> (<em>int</em><em>, </em><em>optional</em>) – Defaults to 256.</p></li>
+<li><p><strong>dim</strong> (<em>int</em><em>, </em><em>optional</em>) – Defaults to 0.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>list chopped images tensors</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>[list]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="preprocess.preGlioma.reconstruct">
+<span class="sig-name descname"><span class="pre">reconstruct</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">images</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">org_size</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">labels</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#preprocess.preGlioma.reconstruct" title="Permalink to this definition">¶</a></dt>
+<dd><p>Reconstructing the image from the patches</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>images</strong> (<em>list</em>) – List of patches</p></li>
+<li><p><strong>org_size</strong> (<em>shape</em>) – Not used in this version. Deprecated</p></li>
+<li><p><strong>labels</strong> (<em>list</em><em> ,</em><em>optional</em>) – Defaults to None. If it is not none it will reconstruct image with the labels gathered from the patches using classifier network</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Reconstructed image</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>torch.tensor</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="preprocess.preGlioma.reverse_pad">
+<span class="sig-name descname"><span class="pre">reverse_pad</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">image</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">org_size</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#preprocess.preGlioma.reverse_pad" title="Permalink to this definition">¶</a></dt>
+<dd><p>Reverse padding of initialized class</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>image</strong> (<em>torch.tensor</em>) – Reconstructed image with padding</p></li>
+<li><p><strong>org_size</strong> (<em>org_size</em>) – Original size of the image</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Reverse padded image</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>torch.tensor</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="preprocess.preGlioma.save_image">
+<span class="sig-name descname"><span class="pre">save_image</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">images</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">segs</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">image</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">seg</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">root</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'/cta/users/abas/Desktop/Meningiom/MeningiomData/preprocessed/'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#preprocess.preGlioma.save_image" title="Permalink to this definition">¶</a></dt>
+<dd><p>Saving the tensors of images</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>images</strong> (<em>list</em>) – Chopped images</p></li>
+<li><p><strong>segs</strong> (<em>list</em>) – Chopped segmentations</p></li>
+<li><p><strong>image</strong> (<em>np.array</em>) – Original image</p></li>
+<li><p><strong>seg</strong> (<em>np.array</em>) – Original segmentation</p></li>
+<li><p><strong>name</strong> (<em>str</em>) – Name of the image</p></li>
+<li><p><strong>root</strong> (<em>str</em><em>, </em><em>optional</em>) – Save path. Defaults to ‘/cta/users/abas/Desktop/Meningiom/MeningiomData/preprocessed/’.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="preprocess.preGlioma.slice_chopper">
+<span class="sig-name descname"><span class="pre">slice_chopper</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">img</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">seg</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">slices</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">-</span> <span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">phase</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'test'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#preprocess.preGlioma.slice_chopper" title="Permalink to this definition">¶</a></dt>
+<dd><p>This function is used to chop the image into slices (Not implemented in s100 project it is needed for the patch-wise projects)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>img</strong> (<em>torch.tensor</em>) – Image to be chopped</p></li>
+<li><p><strong>seg</strong> (<em>torch.tensor</em><em>, </em><em>optional</em>) – Segmentation mask . Defaults to None.</p></li>
+<li><p><strong>slices</strong> (<em>int</em><em>, </em><em>optional</em>) – Number of the slices. Defaults to 5.</p></li>
+<li><p><strong>dim</strong> (<em>int</em><em>, </em><em>optional</em>) – Dimension of the splitting occurs. Defaults to -1.</p></li>
+<li><p><strong>phase</strong> (<em>str</em><em>, </em><em>optional</em>) – Defaults to ‘test’.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>List of torch tensors</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>[list]</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+
+
+          </div>
+          <div class="page-nav">
+            <div class="inner"><ul class="page-nav">
+</ul><div class="footer" role="contentinfo">
+      &#169; Copyright 2021, Abdullah BAŞ.
+    <br>
+    Created using <a href="http://sphinx-doc.org/">Sphinx</a> 4.3.0 with <a href="https://github.com/schettino72/sphinx_press_theme">Press Theme</a> 0.8.0.
+</div>
+            </div>
+          </div>
+      </page>
+    </div></div>
+    
+    
+  </body>
+</html>
