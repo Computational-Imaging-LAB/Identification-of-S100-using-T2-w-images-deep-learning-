@@ -21,7 +21,7 @@ Feature Extractor and Whole Pipe
 ![Open Source? Yes!](https://github.com/Computational-Imaging-LAB/Identification-of-S100-using-T2-w-images-deep-learning-/blob/main/images/ISMRM22_S100.drawio%20(1).png)
 
 
-***Classifier Model
+****Classifier Model****
 
 ![Open Source? Yes!](https://github.com/Computational-Imaging-LAB/Identification-of-S100-using-T2-w-images-deep-learning-/blob/main/images/ISMRM22_S100.drawio%20(2).png)
 
