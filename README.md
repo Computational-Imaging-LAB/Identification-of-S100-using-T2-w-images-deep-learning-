@@ -1,4 +1,3 @@
-# Identification-of-S100-using-T2-w-images-deep-learning-
 
 [![Maintaner](https://img.shields.io/badge/maintainer-CIL-blue)](https://cil.boun.edu.tr)
 [![Website monip.org](https://img.shields.io/website-up-down-green-red/http/monip.org.svg)](https://computational-imaging-lab.github.io/Identification-of-S100-using-T2-w-images-deep-learning-/)
