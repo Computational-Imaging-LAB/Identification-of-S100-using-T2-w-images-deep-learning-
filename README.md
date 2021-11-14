@@ -13,25 +13,32 @@
 
 # Hybrid model for identification of S100 expression in meningiomas.
 
-```
 #
-# Proposed Model Architecture
+# Proposed Models' Architectures and Whole Pipe
+****
+***
+Feature Extractor and Whole Pipe
+![Open Source? Yes!](https://github.com/Computational-Imaging-LAB/Identification-of-S100-using-T2-w-images-deep-learning-/blob/main/images/ISMRM22_S100.drawio%20(1).png)
+
+
+***Classifier Model
+
+![Open Source? Yes!](https://github.com/Computational-Imaging-LAB/Identification-of-S100-using-T2-w-images-deep-learning-/blob/main/images/ISMRM22_S100.drawio%20(2).png)
+
+
+#
+# Results of the study (Accuracy Plots)
 
 ****
 ***
-![Open Source? Yes!](https://github.com/Computational-Imaging-LAB/1DCNN-Glioma-1H-MRS/blob/master/images/image5.jpeg?raw=true)
-#
-# Results of the study
 
-****
-***
-![Open Source? Yes!](https://github.com/Computational-Imaging-LAB/1DCNN-Glioma-1H-MRS/blob/master/images/image3.jpeg?raw=true)
+![Open Source? Yes!](https://github.com/Computational-Imaging-LAB/Identification-of-S100-using-T2-w-images-deep-learning-/blob/main/images/accuracy_plot-s100.png)
 #
 # Loss plots of the models.
 
 ****
 ***
-![Open Source? Yes!](https://github.com/Computational-Imaging-LAB/1DCNN-Glioma-1H-MRS/blob/master/images/image1.jpeg?raw=true)
+![Open Source? Yes!](https://github.com/Computational-Imaging-LAB/Identification-of-S100-using-T2-w-images-deep-learning-/blob/main/images/loss_graph_s100.png)
 
 #
 # HELP AND SUPPORT
@@ -41,6 +48,6 @@ _If there will be any bug or issue that you face please dont hesitate to ask. ab
 
 _Ulu çınarlar fırtınalı diyarlarda yetişir. (Great plane trees grow in stormy lands)--Cemil Meriç (Turkish author)_
 
-This study has been accepted to ISMRM Canada 15-20 May 2021.
+This study has been submitted to ISMRM22.
 
-This study has been supported by TUBITAK 1003 grant 216S432.
+This study has been supported by TUBITAK 1001 grant 119S520.
